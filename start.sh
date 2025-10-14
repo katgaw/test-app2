@@ -57,7 +57,7 @@ fi
 source venv/bin/activate
 pip install -q -r requirements.txt
 
-uvicorn api.main:app --host 0.0.0.0 --port 8000 --reload > ../backend.log 2>&1 &
+uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload > ../backend.log 2>&1 &
 BACKEND_PID=$!
 cd ..
 

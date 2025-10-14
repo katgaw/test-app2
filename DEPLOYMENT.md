@@ -98,16 +98,17 @@ The project is configured as a monorepo with:
 
 ```
 test-app2/
-├── api/                 # Vercel serverless functions (FastAPI backend)
-│   ├── index.py        # Entry point for Vercel
-│   └── requirements.txt # Python dependencies for Vercel
-├── backend/            # FastAPI source code
-│   └── main.py         # Main application
+├── backend/            # FastAPI backend
+│   ├── app/
+│   │   └── main.py    # Main application (Vercel looks for app/main.py)
+│   ├── requirements.txt
+│   ├── runtime.txt
+│   └── vercel.json
 ├── frontend/           # Next.js application
 │   ├── app/
 │   ├── components/
 │   └── package.json
-└── vercel.json         # Vercel configuration
+└── vercel.json         # Root configuration
 ```
 
 ### Vercel Configuration Explained

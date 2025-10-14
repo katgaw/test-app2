@@ -137,7 +137,8 @@ The CLI will automatically detect the correct framework and configuration!
 ```
 test-app2/
 ├── backend/          ← Deploy as separate project
-│   ├── api/
+│   ├── app/          ← Vercel looks for app/main.py
+│   │   └── main.py
 │   └── ...
 ├── frontend/         ← Deploy as separate project
 │   ├── app/

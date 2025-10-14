@@ -56,12 +56,12 @@ A full-stack AI-powered recipe generator with a FastAPI backend and Next.js fron
 
 5. **Start the backend server**
    ```bash
-   uvicorn api.main:app --host 0.0.0.0 --port 8000 --reload
+   uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
    ```
    
    Or simply:
    ```bash
-   python -m api.main
+   python -m app.main
    ```
    
    The backend will run on http://localhost:8000
@@ -106,7 +106,7 @@ Open your browser and go to:
 ```
 test-app2/
 ├── backend/
-│   ├── api/
+│   ├── app/
 │   │   ├── main.py          # FastAPI application
 │   │   └── test_client.py   # Python test client
 │   ├── requirements.txt     # Python dependencies
@@ -198,19 +198,19 @@ All backend libraries are fully compatible with Python 3.13:
 Run the backend in development mode with auto-reload using uvicorn:
 ```bash
 cd backend
-uvicorn api.main:app --host 0.0.0.0 --port 8000 --reload
+uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 ```
 
 Or run directly with Python:
 ```bash
 cd backend
-python -m api.main
+python -m app.main
 ```
 
 Test the API using the Python test client:
 ```bash
 cd backend
-python -m api.test_client
+python -m app.test_client
 ```
 
 ### Frontend Development

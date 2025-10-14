@@ -34,7 +34,7 @@ if not exist "venv\" (
 call venv\Scripts\activate.bat
 pip install -q -r requirements.txt
 
-start "Backend - FastAPI" cmd /k "uvicorn api.main:app --host 0.0.0.0 --port 8000 --reload"
+start "Backend - FastAPI" cmd /k "uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload"
 cd ..
 
 echo Backend started on http://localhost:8000

@@ -54,7 +54,7 @@ pip install -r requirements.txt
 echo "OPENAI_API_KEY=your_actual_api_key_here" > .env
 
 # Start backend with uvicorn
-uvicorn api.main:app --host 0.0.0.0 --port 8000 --reload
+uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 ```
 
 ### Terminal 2 - Frontend

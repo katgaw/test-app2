@@ -22,12 +22,12 @@ echo "OPENAI_API_KEY=your_openai_api_key_here" > .env
 
 **Using uvicorn (Recommended):**
 ```bash
-uvicorn api.main:app --host 0.0.0.0 --port 8000 --reload
+uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 ```
 
 **Using Python directly:**
 ```bash
-python -m api.main
+python -m app.main
 ```
 
 The server will start at http://localhost:8000
@@ -67,14 +67,14 @@ Common uvicorn flags:
 
 ### Production Example:
 ```bash
-uvicorn api.main:app --host 0.0.0.0 --port 8000 --workers 4
+uvicorn app.main:app --host 0.0.0.0 --port 8000 --workers 4
 ```
 
 ## Testing
 
 Test the API using the included test client:
 ```bash
-python -m api.test_client
+python -m app.test_client
 ```
 
 ## Environment Variables
