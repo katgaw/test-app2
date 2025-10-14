@@ -12,7 +12,7 @@ python3 -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
 
 # Install dependencies
-pip install -r ../requirements.txt
+pip install -r requirements.txt
 
 # Create .env file with your OpenAI API key
 echo "OPENAI_API_KEY=your_openai_api_key_here" > .env
@@ -22,12 +22,12 @@ echo "OPENAI_API_KEY=your_openai_api_key_here" > .env
 
 **Using uvicorn (Recommended):**
 ```bash
-uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+uvicorn api.main:app --host 0.0.0.0 --port 8000 --reload
 ```
 
 **Using Python directly:**
 ```bash
-python main.py
+python -m api.main
 ```
 
 The server will start at http://localhost:8000
@@ -67,14 +67,14 @@ Common uvicorn flags:
 
 ### Production Example:
 ```bash
-uvicorn main:app --host 0.0.0.0 --port 8000 --workers 4
+uvicorn api.main:app --host 0.0.0.0 --port 8000 --workers 4
 ```
 
 ## Testing
 
 Test the API using the included test client:
 ```bash
-python test_client.py
+python -m api.test_client
 ```
 
 ## Environment Variables

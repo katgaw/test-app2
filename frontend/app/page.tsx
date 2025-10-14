@@ -35,7 +35,9 @@ export default function DietRecipeApp() {
     setRecipe(null)
 
     try {
-      const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8000"
+      // In production (Vercel), use /api route. In development, use localhost:8000
+      const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 
+                         (process.env.NODE_ENV === 'production' ? '/api' : 'http://localhost:8000')
 
       // Build request body
       const requestBody: {

@@ -48,13 +48,13 @@ python3 -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
 
 # Install dependencies
-pip install -r ../requirements.txt
+pip install -r requirements.txt
 
 # Create .env file
 echo "OPENAI_API_KEY=your_actual_api_key_here" > .env
 
 # Start backend with uvicorn
-uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+uvicorn api.main:app --host 0.0.0.0 --port 8000 --reload
 ```
 
 ### Terminal 2 - Frontend

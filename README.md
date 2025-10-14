@@ -42,7 +42,7 @@ A full-stack AI-powered recipe generator with a FastAPI backend and Next.js fron
 
 3. **Install dependencies**
    ```bash
-   pip install -r ../requirements.txt
+   pip install -r requirements.txt
    ```
 
 4. **Set up environment variables**
@@ -56,12 +56,12 @@ A full-stack AI-powered recipe generator with a FastAPI backend and Next.js fron
 
 5. **Start the backend server**
    ```bash
-   uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+   uvicorn api.main:app --host 0.0.0.0 --port 8000 --reload
    ```
    
    Or simply:
    ```bash
-   python main.py
+   python -m api.main
    ```
    
    The backend will run on http://localhost:8000
@@ -106,8 +106,12 @@ Open your browser and go to:
 ```
 test-app2/
 ├── backend/
-│   ├── main.py              # FastAPI application
-│   ├── test_client.py       # Python test client
+│   ├── api/
+│   │   ├── main.py          # FastAPI application
+│   │   └── test_client.py   # Python test client
+│   ├── requirements.txt     # Python dependencies
+│   ├── runtime.txt          # Python version for Vercel
+│   ├── vercel.json          # Backend Vercel config
 │   └── .env                 # Backend environment variables (create this)
 ├── frontend/
 │   ├── app/
@@ -118,7 +122,10 @@ test-app2/
 │   ├── lib/                 # Utilities
 │   ├── package.json         # Frontend dependencies
 │   └── .env.local          # Frontend environment variables (create this)
-├── requirements.txt         # Python dependencies
+├── vercel.json             # Root Vercel config (for frontend)
+├── start.sh / start.bat    # Startup scripts
+├── QUICKSTART.md           # Quick start guide
+├── DEPLOYMENT.md           # Deployment guide
 ├── README.md               # This file
 ├── LICENSE                 # License file
 └── .gitignore             # Git ignore file
@@ -191,19 +198,19 @@ All backend libraries are fully compatible with Python 3.13:
 Run the backend in development mode with auto-reload using uvicorn:
 ```bash
 cd backend
-uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+uvicorn api.main:app --host 0.0.0.0 --port 8000 --reload
 ```
 
 Or run directly with Python:
 ```bash
 cd backend
-python main.py
+python -m api.main
 ```
 
 Test the API using the Python test client:
 ```bash
 cd backend
-python test_client.py
+python -m api.test_client
 ```
 
 ### Frontend Development
@@ -232,6 +239,24 @@ curl -X POST "http://localhost:8000/recipe" \
     "cooking_time": 30
   }'
 ```
+
+## 🚀 Deployment
+
+### Deploy to Vercel
+
+This app is ready to deploy to Vercel! See the [DEPLOYMENT.md](DEPLOYMENT.md) guide for detailed instructions.
+
+**Quick Deploy:**
+
+1. Push your code to GitHub (already done!)
+2. Go to [Vercel Dashboard](https://vercel.com/dashboard)
+3. Import your repository: `katgaw/test-app2`
+4. Add environment variable: `OPENAI_API_KEY`
+5. Deploy!
+
+Your app will be live at a URL like: `https://your-app.vercel.app`
+
+For detailed deployment instructions, see [DEPLOYMENT.md](DEPLOYMENT.md).
 
 ## 🐛 Troubleshooting
 
