@@ -25,8 +25,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Initialize OpenAI client
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+# Don't initialize OpenAI client at module level - causes issues with Vercel
+# Initialize it inside the endpoint function instead (lazy loading)
 
 
 # Define dietary preference enum
@@ -82,11 +82,15 @@ async def get_recipe(request: RecipeRequest):
     """
     try:
         # Check if API key is set
-        if not os.getenv("OPENAI_API_KEY"):
+        api_key = os.getenv("OPENAI_API_KEY")
+        if not api_key:
             raise HTTPException(
                 status_code=500,
                 detail="OpenAI API key not configured. Please set OPENAI_API_KEY in .env file"
             )
+        
+        # Initialize OpenAI client (lazy loading for Vercel compatibility)
+        client = OpenAI(api_key=api_key)
         
         # Build the prompt
         prompt = f"""Please provide a simple {request.diet_type} dinner recipe.

@@ -6,11 +6,11 @@ echo.
 echo Starting Diet Recipe App...
 echo.
 
-REM Check if .env exists in backend
-if not exist "backend\.env" (
-    echo Warning: backend\.env not found
-    echo Please create backend\.env with your OPENAI_API_KEY
-    echo Example: echo OPENAI_API_KEY=your_key_here > backend\.env
+REM Check if .env exists
+if not exist ".env" (
+    echo Warning: .env not found
+    echo Please create .env with your OPENAI_API_KEY
+    echo Example: echo OPENAI_API_KEY=your_key_here > .env
     echo.
 )
 
@@ -24,7 +24,6 @@ if not exist "frontend\.env.local" (
 
 REM Start Backend
 echo Starting Backend (FastAPI)...
-cd backend
 
 if not exist "venv\" (
     echo Creating Python virtual environment...
@@ -35,7 +34,6 @@ call venv\Scripts\activate.bat
 pip install -q -r requirements.txt
 
 start "Backend - FastAPI" cmd /k "uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload"
-cd ..
 
 echo Backend started on http://localhost:8000
 echo.

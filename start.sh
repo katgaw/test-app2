@@ -14,11 +14,11 @@ BLUE='\033[0;34m'
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
-# Check if .env exists in backend
-if [ ! -f backend/.env ]; then
-    echo -e "${YELLOW}⚠️  Warning: backend/.env not found${NC}"
-    echo "Please create backend/.env with your OPENAI_API_KEY"
-    echo "Example: echo 'OPENAI_API_KEY=your_key_here' > backend/.env"
+# Check if .env exists
+if [ ! -f .env ]; then
+    echo -e "${YELLOW}⚠️  Warning: .env not found${NC}"
+    echo "Please create .env with your OPENAI_API_KEY"
+    echo "Example: echo 'OPENAI_API_KEY=your_key_here' > .env"
     echo ""
 fi
 
@@ -48,7 +48,6 @@ trap cleanup SIGINT SIGTERM
 
 # Start Backend
 echo -e "${BLUE}📦 Starting Backend (FastAPI)...${NC}"
-cd backend
 if [ ! -d "venv" ]; then
     echo "Creating Python virtual environment..."
     python3 -m venv venv
@@ -57,9 +56,8 @@ fi
 source venv/bin/activate
 pip install -q -r requirements.txt
 
-uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload > ../backend.log 2>&1 &
+uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload > backend.log 2>&1 &
 BACKEND_PID=$!
-cd ..
 
 echo -e "${GREEN}✓ Backend started on http://localhost:8000${NC}"
 echo "  Logs: backend.log"
